@@ -1,0 +1,1 @@
+"use strict";!function(t){var e=["pushState","replaceState","popstate","hashchange"],n=function(t){var e=history[t];return function(){e.apply(this,arguments);var n=new Event(t);n.arguments=arguments,window.dispatchEvent(n)}};history.pushState=n("pushState"),history.replaceState=n("replaceState"),e.forEach(function(e){t.addEventListener(e,t.sun_injector_center_v01(e))})}(window);

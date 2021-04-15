@@ -1,0 +1,172 @@
+{
+  "manifest_version": 2,
+  "name": "锐仕方达简历助手",
+  "description": "锐仕方达简历助手建立RNSS系统与第三方简历的互通",
+  "version": "5.0.9",
+  "background": {
+    "page": "background.html"
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "content_scripts":
+  [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "src/lib/jquery-1.8.3.js",
+        "src/js/common-content-script.js"
+      ],
+      "css": ["src/css/sunHelperSty.css"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://*.liepin.cn/resume/*",
+        "*://*.liepin.com/resume/*"
+      ],
+      "js": [
+        "src/js/sun-config.js",
+        "src/js/content-script.js",
+        "src/js/liepin-script.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://*.liepin.cn/*",
+        "*://*.liepin.com/*"
+      ],
+      "js": [
+        "src/js/explore.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://maimai.cn/ent/talents/recruit/resumes/"
+      ],
+      "js": [
+        "src/js/maimai-detail-reset.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "http://h.highpin.cn/*",
+        "https://h.highpin.cn/*",
+        "http://hr.highpin.cn/Resume/*"
+      ],
+      "run_at": "document_end",
+      "js": [
+        "src/js/sun-config.js",
+        "src/js/content-script.js",
+        "src/js/highpin-script.js"
+      ]
+    },
+    {
+      "matches": [
+        "http://www.51jingying.com/manager/cv.php?act=showCv&managerId*",
+        "https://www.51jingying.com/manager/cv.php?act=showCv&managerId*",
+        "*://www.51jingying.com/manager/showcv.php?managerId=*"
+      ],
+      "run_at": "document_end",
+      "js": [
+        "src/js/sun-config.js",
+        "src/js/content-script.js",
+        "src/js/51job-script.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://rd5.zhaopin.com/resume/detail*",
+        "http://ihr.zhaopin.com/resume/details/*",
+        "https://rd.zhaopin.com/resumepreview/resume/viewone*",
+        "http://rd.zhaopin.com/resumepreview/resume/viewone*"
+      ],
+      "run_at": "document_end",
+      "js": [
+        "src/js/sun-config.js",
+        "src/js/content-script.js",
+        "src/js/zhilian-script.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://rd6.zhaopin.com/resume/detail*"
+      ],
+      "run_at": "document_end",
+      "js": [
+        "src/js/sun-config.js",
+        "src/js/content-script.js",
+        "src/js/zhilian-new-script.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://maimai.cn/contact/detail/*"
+      ],
+      "run_at": "document_end",
+      "js": [
+        "src/js/sun-config.js",
+        "src/js/content-script.js",
+        "src/js/maimai-script.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://maimai.cn/ent/micro_resume/*"
+      ],
+      "run_at": "document_end",
+      "js": [
+        "src/js/sun-config.js",
+        "src/js/content-script.js",
+        "src/js/maimai-micro-script.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://maimai.cn/jobs/jobs_resume*"
+      ],
+      "run_at": "document_end",
+      "js": [
+        "src/js/sun-config.js",
+        "src/js/content-script.js",
+        "src/js/maimai-detail-script.js"
+      ]
+    },
+    {
+      "matches": [
+        "http://www.linkedin.com/*",
+        "https://www.linkedin.com/*"
+      ],
+      "run_at": "document_end",
+      "js": [
+        "src/js/sun-config.js",
+        "src/js/content-script.js",
+        "src/js/linkdin-script.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "storage",
+    "contextMenus",
+    "http://staff.risfond.com/"
+  ],
+  "browser_action": {
+    "default_title": "锐仕方达简历助手",
+    "default_icon":{
+      "19": "images/icon19.png",
+      "38": "images/icon38.png"
+    }
+  },
+  "web_accessible_resources": [
+    "src/js/core/linkedin-interceptor.js",
+    "src/js/core/maimai-interceptor.js"
+  ]
+}
